@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hr" class="com.cognizant.employee.Department"
+		scope="prototype">
+		<property name="id" value="1" />
+		<property name="name" value="HR" />
+	</bean>
+
+	<bean id="analyst" class="com.cognizant.employee.Department"
+		scope="prototype">
+		<property name="id" value="2" />
+		<property name="name" value="Analyst" />
+	</bean>
+
+	<bean id="employee1" class="com.cognizant.employee.Employee"
+		scope="prototype">
+		<property name="id" value="1" />
+		<property name="name" value="Amit" />
+		<property name="department" ref="hr" />
+	</bean>
+
+	<bean id="employee2" class="com.cognizant.employee.Employee"
+		scope="prototype">
+		<property name="id" value="2" />
+		<property name="name" value="Mohit" />
+		<property name="department" ref="analyst" />
+	</bean>
+
+
+	<bean id="employeeList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="employee1"></ref>
+				<ref bean="employee2"></ref>
+			</list>
+		</constructor-arg>
+
+	</bean>
+	
+	<bean id="departmentList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="hr"></ref>
+				<ref bean="analyst"></ref>
+			</list>
+		</constructor-arg>
+
+	</bean>
+
+
+</beans>
